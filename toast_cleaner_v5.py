@@ -14,8 +14,8 @@ def clean_data(data, city, state):
         df = pd.read_csv(data, dtype={'Tab Name': str, 'Phone': str}, encoding='cp1252')
         print("Dataframe is read in!")
     print(df['Paid Date'].tail())
-    df['Paid Date'] = pd.to_datetime(df['Paid Date'], format='%m/%d/%y %I:%M %p')
-    df['Order Date'] = pd.to_datetime(df['Order Date'], format='%m/%d/%y %I:%M %p')
+    df['Paid Date'] = pd.to_datetime(df['Paid Date'])
+    df['Order Date'] = pd.to_datetime(df['Order Date'])
     print("Dates are in DateTime Format!")
 
     #Filling NAs with 0 for numeric columns so I can clean up phone numbers, and blanks for everything else
