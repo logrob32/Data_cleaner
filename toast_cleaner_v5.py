@@ -7,13 +7,12 @@ from scipy.stats import mode
 
 def clean_data(data, city, state):
     print("Running Toast Cleaner v5!")
-    # Identifying the encoding
-    with open(data, 'rb') as f:
-    result = chardet.detect(f.read())
-    
-    df = pd.read_csv(data, dtype={'Tab Name': str, 'Phone': str}, encoding=result['encoding'])
-    
-    print("Dataframe is read in!")
+    # Attempt to read the data into a DataFrame
+    try:
+        df = pd.read_csv(data, dtype={'Tab Name': str, 'Phone': str})
+    except UnicodeDecodeError:
+        df = pd.read_csv(data, dtype={'Tab Name': str, 'Phone': str}, encoding='cp1252')
+        print("Dataframe is read in!")
     print(df['Paid Date'].tail())
     df['Paid Date'] = pd.to_datetime(df['Paid Date'])
     df['Order Date'] = pd.to_datetime(df['Order Date'])
