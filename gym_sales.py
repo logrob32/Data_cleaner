@@ -1,10 +1,10 @@
 #Importing all packages
-    import pandas as pd
-    import numpy as np
-    from datetime import date, time, timedelta
-    import phonenumbers
-    import re
-    from scipy.stats import mode
+import pandas as pd
+import numpy as np
+from datetime import date, time, timedelta
+import phonenumbers
+import re
+from scipy.stats import mode
 
 def clean_data(data, yvc):
     print("Running Gym Sales Cleaner!")
